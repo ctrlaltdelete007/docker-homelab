@@ -1,0 +1,12 @@
+# simplified example compose
+# production setup contains additional services and environment variables
+
+services:
+  immich-server:
+    image: ghcr.io/immich-app/immich-server:release
+    restart: unless-stopped
+    ports:
+      - "2283:2283"
+    volumes:
+      - /mnt/docker/data/immich/upload:/usr/src/app/upload
+      - /mnt/ds/photo:/photo
