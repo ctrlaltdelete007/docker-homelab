@@ -2,45 +2,44 @@
 
 Example of my Docker homelab setup using Dockhand.
 
+## Overview
+
+This repository contains a simplified and sanitized example of my Docker homelab structure.
+
+It is **not** my full production setup.
+Secrets, API keys, internal domains, private network details and personal configuration have been removed.
+
 ## Host
 
-Ubuntu VM with Docker
+- Ubuntu VM
+- Docker / Docker Compose
+- Dockhand for stack management
 
-## Folder structure
+## Folder layout
 
-### Stacks
+### Compose stacks
 `/mnt/docker/stacks`
 
-### Persistent data
+### Persistent app data
 `/mnt/docker/data`
 
-## Services
+### External storage / media
+`/mnt/ds`
 
-- Dockhand
-- Immich
-- Plex
-- Mealie
-- Calibre-Web
-- Watchtower
+## Example structure
 
-Each service runs in its own compose stack.
-
-## Example Dockhand stack
-
-```yaml
-services:
-  dockhand:
-    image: fsnys/dockhand:latest
-    container_name: dockhand
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    volumes:
-      - /mnt/docker/data/dockhand:/app/data
-      - /mnt/docker/stacks:/stacks
-      - /var/run/docker.sock:/var/run/docker.sock
-```
-Notes
-
-This repository is a sanitized example setup.
-Secrets, tokens, private domains and internal details are intentionally removed.
+```text
+/mnt/docker
+├── data
+│   ├── dockhand
+│   ├── immich
+│   ├── plex
+│   ├── meali
+│   └── acw
+└── stacks
+    ├── dockhand
+    ├── immich
+    ├── plex
+    ├── meali
+    ├── cwa
+    └── watchtower
